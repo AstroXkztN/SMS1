@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sqlmap-2.dtd">
+
+<!-- ONE MODULE, ONE SQLMAP
+<sqlMap namespace="user">
+	<select id="validateLogin" resultClass="java.lang.String">
+		SELECT user_name
+		  FROM trng_user
+		 WHERE user_name = #userName#
+		   AND password = #password#
+	</select>
+	
+	<procedure id="addRec" parameterClass="java.util.Map">
+		BEGIN
+			INSERT INTO trng_user
+				(user_name,password)
+			VALUES(#userName#, #password#);
+		END;
+	</procedure>
+	
+	<procedure id="updateRec" parameterClass="java.util.Map">
+		BEGIN
+			UPDATE trng_user
+			SET password = #toChange#
+			WHERE user_name = #uName#; 
+		END;
+	</procedure>
+	
+	<typeAlias alias="UserClass" type="com.entity.User"/>
+	
+	<resultMap id="allUserMap" class="UserClass">
+		<result column="user_name" property="userName"/>
+		<result column="password" property="password"/>
+	</resultMap>
+	
+	<select id="getAllUsers" resultMap="allUserMap">
+		SELECT user_name, password
+		  FROM trng_user
+	  ORDER BY user_name ASC
+	</select>
+</sqlMap>
+-->
