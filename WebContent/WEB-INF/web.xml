@@ -6,14 +6,24 @@
   </welcome-file-list>
   
   <!-- ONE MODULE, ONE SERVLET & SERVLET-MAPPING -->
-  <!-- TEMPLATE AS BELOW: 
+  <!-- TEMPLATE AS BELOW:  -->
   <servlet>
-  	<servlet-name>userservlet</servlet-name>
-  	<servlet-class>com.servlet.UserServlet</servlet-class>
+  	<servlet-name>homeservlet</servlet-name>
+  	<servlet-class>com.servlet.HomeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>userservlet</servlet-name>
-  	<url-pattern>/userserv</url-pattern>
-  </servlet-mapping> -->
+  	<servlet-name>homeservlet</servlet-name>
+  	<url-pattern>/homeserv</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>usermaintenanceservlet</servlet-name>
+  	<servlet-class>com.servlet.UserMaintenanceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>usermaintenanceservlet</servlet-name>
+  	<url-pattern>/updateuser</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>
