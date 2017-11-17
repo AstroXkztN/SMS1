@@ -1,0 +1,51 @@
+@CHARSET "ISO-8859-1";
+
+/* elements */
+select{
+	height:26px
+}
+/* classes */
+.requiredField{
+	color: red;
+}
+.rowHead{
+	text-align: right;
+}
+.spacing{
+	padding-right:10px;
+}
+.rowInput{
+	width:200px; 
+	border:1px solid black; 
+	border-radius:10px; 
+	padding:3px; 
+	height:26px;
+}
+.elementOne{
+	padding-right:10px;
+	padding-bottom:5px;
+}
+.buttonsTab{
+	text-align:center;
+	padding-top:20px;
+}
+.noBorder{
+	border:0;
+}
+.selected{
+	background-color: #9fff9f;
+}
+.hoverIn{
+	background-color: silver;
+}
+.tableHeader{
+	background-color:silver;
+	text-align:center;
+}
+.data{
+	text-align:center;
+}
+/* id */
+#outer{
+	border: 0px !important;
+}

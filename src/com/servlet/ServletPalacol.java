@@ -38,11 +38,7 @@ public class ServletPalacol extends HttpServlet{
 				request.setAttribute("user", user);
 				session.setAttribute("userSession", user);
 				
-				if(accessLevel.equals("A")) {
-					view = "views/sampleAdmin.jsp";
-				}else {
-					view = "views/sampleUser.jsp";
-				}
+				view = "views/structure.jsp";
 			}else{// if login unsuccessful
 				view = service.validateLogin(request, users);
 			}

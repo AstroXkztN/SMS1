@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sqlmap-2.dtd">
 
+<sqlMap namespace="user">
+	<typeAlias alias="UserClass" type="com.entity.User"/>
+	<resultMap id="allUserMap" class="UserClass">
+		<result column="user_id" property="userID"/>
+		<result column="first_name" property="firstName"/>
+		<result column="last_name" property="lastName"/>
+		<result column="middle_initial" property="middleInitial"/>
+		<result column="email" property="emailAddress"/>
+		<result column="active_tag" property="activeTag"/>
+		<result column="access_level" property="accessLevel"/>
+		<result column="entry_date" property="entryDate"/>
+		<result column="last_login" property="lastLogin"/>
+		<result column="last_user" property="lastUpdatedBy"/>
+		<result column="last_update" property="lastUpdate"/>
+	</resultMap>
+	
+	<select id="getAllUsers" resultMap="allUserMap">
+		SELECT user_id,password,first_name,last_name, middle_initial,email,active_tag,access_level,entry_date,last_login,last_user,last_update
+		  FROM sms_users_1
+	  ORDER BY user_id ASC
+	</select>
+	
+	<procedure id="updateRec" parameterClass="java.util.Map">
+		BEGIN
+			UPDATE sms_users_1
+			SET	user_id = #newUserID#,
+				first_name = #newFirstName#,
+				last_name = #newLastName#,
+				middle_initial = #newMiddleInitial#,
+				email = #newEmailAddress#,
+				active_tag = #newActiveTag#,
+				access_level = #newAccessLevel#,
+				last_user = #newLastUser#,
+				last_update = SYSDATE
+			WHERE user_id = #currUserID#; 
+		END;
+	</procedure>
+	
+	<procedure id="addRec" parameterClass="java.util.Map">
+		BEGIN
+			INSERT INTO sms_users_1
+				(user_id,password,first_name,last_name,middle_initial,email,active_tag,access_level,entry_date,last_user,last_update)
+			VALUES(#setUserID#, #setPassword#, #setFirstName#, #setLastName#, #setMiddleInitial#, #setEmailAddress#, #setActiveTag#, #setAccessLevel#, SYSDATE, #setLastUser#, SYSDATE);
+		END;
+	</procedure>
+</sqlMap>
+
 <!-- ONE MODULE, ONE SQLMAP
 <sqlMap namespace="user">
 	<select id="validateLogin" resultClass="java.lang.String">
@@ -18,25 +65,6 @@
 		END;
 	</procedure>
 	
-	<procedure id="updateRec" parameterClass="java.util.Map">
-		BEGIN
-			UPDATE trng_user
-			SET password = #toChange#
-			WHERE user_name = #uName#; 
-		END;
-	</procedure>
 	
-	<typeAlias alias="UserClass" type="com.entity.User"/>
-	
-	<resultMap id="allUserMap" class="UserClass">
-		<result column="user_name" property="userName"/>
-		<result column="password" property="password"/>
-	</resultMap>
-	
-	<select id="getAllUsers" resultMap="allUserMap">
-		SELECT user_name, password
-		  FROM trng_user
-	  ORDER BY user_name ASC
-	</select>
 </sqlMap>
 -->

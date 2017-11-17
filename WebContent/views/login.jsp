@@ -14,7 +14,7 @@
 			<div class="hero-container">
 				<div class="wow fadeIn">
 			    	<div class="hero-logo">
-			        	<img class="" src="img/logo.png" alt="SMS">
+			        	<img class="" src="${pageContext.request.contextPath}/img/logo.png" alt="SMS">
 			        </div>
 			
 			        <h1 class="section-title">Supplies Management System</h1>
@@ -138,5 +138,6 @@
 	
 	
 </script>
+
 </html>
 

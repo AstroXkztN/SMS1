@@ -9,9 +9,9 @@ import com.entity.User;
 public interface UserDao {
 	/* SAMPLE DAO CONTENT
 	 * 
-	 * public String validateLogin(Map<String, Object> params) throws SQLException;
+	 * public String validateLogin(Map<String, Object> params) throws SQLException;*/
+
 	void addUser(Map<String, Object> params) throws SQLException;
+	List<User> getAllUsers() throws SQLException;
 	void updateUser(Map<String, Object> params) throws SQLException;
-	List<User> getAllUsers() throws SQLException;*/
-	
 }
