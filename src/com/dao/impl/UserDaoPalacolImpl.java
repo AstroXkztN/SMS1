@@ -19,7 +19,7 @@ public class UserDaoPalacolImpl implements UserDaoPalacol{
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String query = "SELECT user_id, password, email, active_tag, access_level FROM SMS_USERS_1";
+		String query = "SELECT user_id, password, first_name, last_name, middle_initial, email, active_tag, access_level, entry_date FROM SMS_USERS_1 ";
 		
 		try{
 			DBConnect db = new DBConnect("192.10.10.253", "trng", "1521", "hr", "hr");
@@ -31,10 +31,14 @@ public class UserDaoPalacolImpl implements UserDaoPalacol{
 			while(rs.next()) {
 				String user_id = rs.getString("user_id");
 				String password = rs.getString("password");
+				String first_name = rs.getString("first_name");
+				String last_name = rs.getString("last_name");
+				String middle_initial = rs.getString("middle_initial");
 				String email = rs.getString("email");
 				String active_tag = rs.getString("active_tag");
 				String access_level = rs.getString("access_level");
-				UserPalacol user = new UserPalacol(user_id, password, email, active_tag, access_level);
+				String entry_date = rs.getString("entry_date");
+				UserPalacol user = new UserPalacol(user_id, password,first_name, last_name, middle_initial, email, active_tag, access_level, entry_date);
 				result.add(user);
 			}//while
 			

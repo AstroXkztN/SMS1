@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="header.jsp"></jsp:include>
-<body>	
+<body class="hold-transition skin-blue sidebar-mini">	
 	 
 	<div id="mainDiv">
 		
@@ -70,7 +70,6 @@
 				},
 				onComplete : function(response){
 					$("mainDiv").update(response.responseText);
-					
 					
 				}
 			});

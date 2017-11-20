@@ -77,4 +77,23 @@ public class UserDaoImpl implements UserDao{
 			this.getSqlMapClient().endTransaction();
 		}
 	}
+
+	@Override
+	public void updatePass(Map<String, Object> params) throws SQLException {
+		try{
+			this.sqlMapClient.startTransaction();
+			this.sqlMapClient.getCurrentConnection().setAutoCommit(false);
+			this.sqlMapClient.startBatch();
+			
+			this.sqlMapClient.update("updatePass",params);
+			
+			this.sqlMapClient.executeBatch();
+			this.sqlMapClient.getCurrentConnection().commit();;
+		}catch(SQLException e){
+			this.sqlMapClient.getCurrentConnection().rollback();
+			throw e;
+		}finally{
+			this.getSqlMapClient().endTransaction();
+		}
+	}
 }

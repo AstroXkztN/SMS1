@@ -46,6 +46,17 @@
 			VALUES(#setUserID#, #setPassword#, #setFirstName#, #setLastName#, #setMiddleInitial#, #setEmailAddress#, #setActiveTag#, #setAccessLevel#, SYSDATE, #setLastUser#, SYSDATE);
 		END;
 	</procedure>
+	
+	<procedure id="updatePass" parameterClass="java.util.Map">
+		BEGIN
+			UPDATE sms_users_1
+			SET	password = #newPass#,
+				last_user = #lastUser#,
+				last_update = SYSDATE
+			WHERE user_id = #lastUser#
+			AND password = #currPass#; 
+		END;
+	</procedure>
 </sqlMap>
 
 <!-- ONE MODULE, ONE SQLMAP

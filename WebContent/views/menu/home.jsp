@@ -10,7 +10,7 @@
     <section class="content-header">
       <h1>
         Home
-        <small>Welcome Kenneth!</small> 
+        <small>Welcome ${firstname}!</small> 
       </h1>
       <ol class="breadcrumb">
         <li><i class="fa fa-dashboard"></i> Home</li>
@@ -33,5 +33,5 @@
 
 
 </body>
-<script type="text/javascript">var $j = jQuery.noConflict();</script>
+
 </html>

@@ -32,6 +32,10 @@ public class ServicePalacolImpl implements ServicePalacol{
 		for(UserPalacol user : users) {
 			if(userName.equals(user.getUserName()) && password.equals(user.getPassword()) ){
 				if(user.getActiveTag().equals("Y")) {
+					ServletPalacol.userID = user.getUserName();
+					ServletPalacol.password = user.getPassword();
+					ServletPalacol.firstName = user.getFirst_name();
+					ServletPalacol.lastName = user.getLast_name();
 					loginSuccess = true;
 					ServletPalacol.accessLevel = user.getAccessLevel();
 					daoUser.updateLastLogin(user.getUserName());
@@ -52,6 +56,7 @@ public class ServicePalacolImpl implements ServicePalacol{
 		for(UserPalacol user : users) {
 			if(userName.equals(user.getUserName()) && !password.equals("")) {
 				if(user.getActiveTag().equals("Y")) {
+					
 					request.setAttribute("loginMessage", "invalid"); 
 					request.setAttribute("attempts", --ServletPalacol.userAttempt);
 					view = "views/login.jsp";
@@ -84,13 +89,11 @@ public class ServicePalacolImpl implements ServicePalacol{
 			request.setAttribute("chkSession", "Y");
 			view = "views/login.jsp";
 		}else {
-			request.setAttribute("user", " back "+userSession);
+			request.setAttribute("firstname", (String) session.getAttribute("first"));
+			request.setAttribute("lastname", (String) session.getAttribute("last"));
+			request.setAttribute("accesslevel", ServletPalacol.accessLevel);
+			view = "views/structure.jsp";
 			
-			if(ServletPalacol.accessLevel.equals("A")) {
-				view = "views/sampleAdmin.jsp";
-			}else {
-				view = "views/sampleUser.jsp";
-			}
 		}//else
 		return view;
 	}//checkSession()

@@ -61,4 +61,14 @@ public class UserMaintenanceServiceImpl implements UserMaintenanceService{
 		this.getUserDao().addUser(params);
 	}
 
+	@Override
+	public void updatePassword(HttpServletRequest req) throws SQLException {
+		Map<String,Object> params = new HashMap<>();
+		params.put("currPass", req.getParameter("curr_password"));
+		params.put("newPass", req.getParameter("new_password"));
+		params.put("lastUser", req.getParameter("last_user"));
+		
+		this.getUserDao().updatePass(params);
+	}
+
 }

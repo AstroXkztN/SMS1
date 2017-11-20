@@ -19,6 +19,10 @@ public class ServletPalacol extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	public static String accessLevel; 
 	public static int userAttempt = 3; 
+	public static String userID = "";
+	public static String password = "";
+	public static String firstName = "";
+	public static String lastName = "";
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,7 +41,11 @@ public class ServletPalacol extends HttpServlet{
 				String user = request.getParameter("userName");
 				request.setAttribute("user", user);
 				session.setAttribute("userSession", user);
-				
+				request.setAttribute("accesslevel", ServletPalacol.accessLevel);
+				request.setAttribute("firstname", firstName);
+				request.setAttribute("lastname", lastName);
+				session.setAttribute("first", firstName);
+				session.setAttribute("last", lastName);
 				view = "views/structure.jsp";
 			}else{// if login unsuccessful
 				view = service.validateLogin(request, users);

@@ -1,35 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
-<head>
-	<%-- <script src="${pageContext.request.contextPath}/js/prototype.js"></script> --%>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Supplies Management System</title>
-  <%-- <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect. -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dist/css/skins/skin-blue.min.css">
-
-  <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> --%>
-</head>
 
 <body class="hold-transition skin-blue sidebar-mini" onload="redirect('home')">
-<div class="wrapper">
+<div class="wrapper" id="mainDiv">
 
   <!-- Main Header -->
   <header class="main-header">
@@ -60,10 +35,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="${pageContext.request.contextPath}/css/dist/img/kenneth.jpg" class="img-circle" alt="User Image">
+          <img src="${pageContext.request.contextPath}/css/dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Kenneth Gutierrez</p>
+          <p>${firstname} ${lastname}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -74,21 +49,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU PANE</li>
         <!-- Optionally, you can add icons to the links -->
-        <li id="btnHome" class="active"><a href="#"><i class="fa fa-home"></i> <span>Home</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-wrench"></i> <span>Maintenance</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li id="sidebtnUserMaintenance"><a href="#">User</a></li>
-            <li><a href="#">Supply Types</a></li>
-			<li><a href="#">Supplies Maintenance</a></li>
-          </ul>
-        </li>
-        <li><a href="#"><i class="fa fa-pencil-square-o"></i> <span>Supplies</span></a></li>
-        <li><a href="#"><i class="fa fa-pie-chart"></i> <span>Stocks</span></a></li>
+        <li id="btnHome" class="sidePane active"><a href="#"><i class="fa fa-home"></i> <span>Home</span></a></li>
+        <c:if test="${accesslevel == 'A'}">
+	        <li class="treeview menu-open">
+	          <a href="#"><i class="fa fa-wrench"></i> <span>Maintenance</span>
+	            <span class="pull-right-container">
+	                <i class="fa fa-angle-left pull-right"></i>
+	              </span>
+	          </a>
+	          <ul class="treeview-menu" style="display: block;">
+	            <li id="sidebtnUserMaintenance" class="sidePane"><a href="#">User</a></li>
+	            <li class="sidePane"><a href="#">Supply Types</a></li>
+				<li class="sidePane"><a href="#">Supplies Maintenance</a></li>
+	          </ul>
+	        </li>
+        </c:if>
+        <li class="sidePane"><a href="#"><i class="fa fa-pencil-square-o"></i> <span>Supplies</span></a></li>
+        <li class="sidePane"><a href="#"><i class="fa fa-pie-chart"></i> <span>Stocks</span></a></li>
+      </ul>
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">ACCOUNT SETTINGS</li>
+        <!-- Optionally, you can add icons to the links -->
+        <li id="btnChangePassword"><a href="#"><i class="fa fa-pencil-square-o"></i> <span>Change Password</span></a></li>
+        <li id="btnSignOut"><a href="#"><i class="fa fa-sign-out"></i> <span>Sign out</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -96,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" id="mainDiv">
+  <div class="content-wrapper" id="subDiv">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       
@@ -125,28 +108,64 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-<%-- <!-- jQuery 3 -->
+ <!-- jQuery 3 -->
 <script src="${pageContext.request.contextPath}/css/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="${pageContext.request.contextPath}/css/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="${pageContext.request.contextPath}/css/dist/js/adminlte.min.js"></script> --%>
-<!-- <script type="text/javascript">var $j = jQuery.noConflict();</script> -->
+<script src="${pageContext.request.contextPath}/css/dist/js/adminlte.min.js"></script> 
+<script type="text/javascript">var $j = jQuery.noConflict();</script> 
 
 </body>
 </html>
 <script type="text/javascript">
+console.log('${accesslevel}');
+console.log('${firstname}');
 	$("btnHome").observe("click",function(){
 		redirect("home");
+		activeRemover();
+		$$("#btnHome")[0].writeAttribute("class","active");
 	});
 	$("sidebtnUserMaintenance").observe("click",function(){
 		redirect("usermaintenance");
+		activeRemover();
+		$$("#sidebtnUserMaintenance")[0].writeAttribute("class","active");
 	});
-	
+	$("btnChangePassword").observe("click",function(){
+		redirect("changepassword");
+		activeRemover();
+		$$("#btnChangePassword")[0].writeAttribute("class","active");
+	});
+	$("btnSignOut").observe("click",function(){
+		activeRemover();
+		signout("logout");
+	});
+	function activeRemover(){
+		$$('.sidePane').each(function(x){
+			x.removeClassName("active");
+		});
+	}
 	function redirect(page){
 		try{
 			new Ajax.Request("${pageContext.request.contextPath}/homeserv",{
 				method : "get",
+				parameters : {
+					action : page
+				} ,
+				onComplete : function(response){
+					$("subDiv").update(response.responseText);			 
+				}
+			});
+		}catch(e){
+			alert("home.jsp - userMaintenance error: " + e);
+		}
+		
+	}
+	redirect("home");
+	function signout(page){
+		try{
+			new Ajax.Request("${pageContext.request.contextPath}/login",{
+				method : "post",
 				parameters : {
 					action : page
 				} ,
@@ -158,4 +177,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			alert("home.jsp - userMaintenance error: " + e);
 		}
 	}
+	
 </script>

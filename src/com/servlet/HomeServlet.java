@@ -27,10 +27,12 @@ public class HomeServlet extends HttpServlet{
 		try{
 			ApplicationContext context = new ClassPathXmlApplicationContext("/com/resource/applicationContext.xml");
 			if("home".equals(action)){
+				req.setAttribute("firstname", ServletPalacol.firstName);
 				view = "views/menu/home.jsp";
 			}else if("usermaintenance".equals(action)){
 				UserMaintenanceService userMaintenanceService = (UserMaintenanceService) context.getBean("userMaintenanceService");
 				req.setAttribute("userTable", userMaintenanceService.getAllUser());
+				req.setAttribute("userID", ServletPalacol.userID);
 				view = "views/menu/maintenance/userMaintenance.jsp";
 			}else if("supplytypesmaintenance".equals(action)){
 				view = "views/menu/maintenance/supplyTypesMaintenance.jsp";
@@ -40,6 +42,10 @@ public class HomeServlet extends HttpServlet{
 				view = "views/menu/supplies.jsp";
 			}else if("stocks".equals(action)){
 				view = "views/menu/stocks.jsp";
+			}else if("changepassword".equals(action)){
+				req.setAttribute("userID", ServletPalacol.userID);
+				req.setAttribute("password", ServletPalacol.password);
+				view = "views/menu/changePassword.jsp";
 			}else if("signout".equals(action)){
 				view = "views/login.jsp";
 			}

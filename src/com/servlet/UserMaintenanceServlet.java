@@ -37,6 +37,9 @@ public class UserMaintenanceServlet extends HttpServlet {
 				userMaintenanceService.addUser(req);
 				req.setAttribute("userTable", userMaintenanceService.getAllUser());
 				view = "views/menu/maintenance/userMaintenance.jsp";
+			}else if("updatePassword".equals(action)){
+				userMaintenanceService.updatePassword(req);
+				view = "views/menu/changePassword.jsp";
 			}
 		}catch(Exception e){
 			e.printStackTrace();

@@ -10,5 +10,6 @@ import com.entity.User;
 public interface UserMaintenanceService {
 	List<User> getAllUser() throws SQLException;
 	void updateUser(HttpServletRequest req) throws SQLException;
+	void updatePassword(HttpServletRequest req) throws SQLException;
 	void addUser(HttpServletRequest req) throws SQLException;
 }

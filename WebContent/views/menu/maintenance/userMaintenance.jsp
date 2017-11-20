@@ -26,8 +26,7 @@
 
     <!-- Main content -->
     <section class="content">
-		
-		<div class="box box-info">
+		<div class="box box-info col-sm-10">
               <div class="box-body">
                 <div class="form-group">
                   <label for="txtUserID" class="col-sm-2 control-label">User ID</label>
@@ -99,6 +98,14 @@
                 <button type="submit" id="btnCancel" class="btn btn-default" disabled>Cancel</button>
               </div>
           </div>
+		<div class="callout callout-info col-sm-2">
+                <h4>Input Field Requirements</h4>
+				<p>Save Button will enable once the following requirements are fulfilled:</p>
+                <li>ALL fields are required except for Middle Initial.</li>
+                <li>User ID doesn't exist in the Users MasterList.</li>
+                <li>Password should be minimum of 8 and maximum of 20 characters.</li>
+        </div>
+        </div>
 	<hr>
       <div class="row" id="userTable" style="visibility:visible">
         <div class="col-xs-12">
@@ -194,41 +201,7 @@
               </table>
 			  </div>
 			  </div>
-			  <!-- <div class="row">
-				<div class="col-sm-5">
-					<div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 3 of 3 entries</div>
-				</div>
-				<div align=right class="col-sm-7">
-					<div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-						<ul class="pagination">
-							<li class="paginate_button previous disabled" id="example1_previous">
-								<a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a>
-							</li>
-							<li class="paginate_button active">
-								<a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
-							</li>
-							<li class="paginate_button ">
-								<a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a>
-							</li>
-							<li class="paginate_button ">
-								<a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a>
-							</li>
-							<li class="paginate_button ">
-								<a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a>
-							</li>
-							<li class="paginate_button ">
-								<a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a>
-							</li>
-							<li class="paginate_button ">
-								<a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a>
-							</li>
-							<li class="paginate_button next" id="example1_next">
-								<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div> -->
+			  
 			</div>
             </div>
             <!-- /.box-body -->
@@ -244,7 +217,7 @@
 
 <!-- page script -->
 <script>
-	var sessionUserID = "kenneth";
+	var sessionUserID = "${userID}";
 	var activeTag = "";
 	var accessLevel = "";
 		$$('tr[class="data"]').each(function(x){
@@ -332,6 +305,7 @@
 						curr_id : $F("txtCurrUserID")
 					} ,
 					onComplete : function(response){
+						swal("User Updated", "User details has been successfully updated!","success");
 						$("subDiv").update(response.responseText);			 
 					}
 				});
@@ -352,11 +326,11 @@
 			}
 		}
 		function fieldChecker(){
+			$$("#btnSave")[0].writeAttribute("disabled","disabled");
 			if($$("#txtUserID")[0].value != "" && 
 				$$("#txtPassword")[0].value.length >= 8 &&
 				$$("#txtFirstName")[0].value != "" &&
 				$$("#txtLastName")[0].value != "" &&
-				$$("#txtMiddleInitial")[0].value != "" &&
 				$$("#txtEmailAddress")[0].value != ""){
 				$$("#btnSave")[0].removeAttribute("disabled");
 			}
@@ -397,9 +371,9 @@
 		}
 		( function($) {
 			$(document).ready(function(){
-			    $('.search').on('keyup',function(){
+			    $('.search').on('keyup',function(){//id of search bar
 			        var searchTerm = $(this).val().toLowerCase();
-			        $('#example2 tbody tr').each(function(){
+			        $('#example2 tbody tr').each(function(){ //id of table row
 			            var lineStr = $(this).text().toLowerCase();
 			            if(lineStr.indexOf(searchTerm) === -1){
 			                $(this).hide();

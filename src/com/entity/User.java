@@ -88,7 +88,11 @@ public class User {
 		return lastUpdate;
 	}
 	public void setLastUpdate(Date lastUpdate) {
+		if(lastUpdate == null){
+			this.lastUpdate = null;
+		}else{
 		this.lastUpdate = dateFormat.format(lastUpdate);
+		}
 	}
 	public String getPassword() {
 		return password;
