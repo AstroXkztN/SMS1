@@ -53,7 +53,94 @@
 			    </div>
 			</div>
 		</section>
-
+		
+		<!--==========================
+		Team Section
+		============================-->
+		<section id="team">
+		  <div class="container wow fadeInUp">
+		    <div class="row">
+		      <div class="col-md-12">
+		        <h3 class="section-title">Our Team</h3>
+		        <div class="section-title-divider"></div>
+		        <p class="section-description">Group Juan Members</p>
+		      </div>
+		    </div>
+		
+		    <div class="row">
+		      <div class="col-md-2 col-md-offset-1">
+		        <div class="member">
+		          <div class="pic"><img src="img/amiel.jpg" alt=""></div>
+		          <h4>Amiel Palacol</h4>
+		          <span>Module 1</span>
+		          <div class="social">
+		          <a href=""><i class="fa fa-twitter"></i></a>
+		          <a href=""><i class="fa fa-facebook"></i></a>
+		          <a href=""><i class="fa fa-google-plus"></i></a>
+		          <a href=""><i class="fa fa-linkedin"></i></a>
+		        </div>
+		      </div>
+		    </div>
+		        
+		    <div class="col-md-2">
+		      <div class="member">
+		        <div class="pic"><img src="img/Kenneth.jpg" alt=""></div>
+		        <h4>Kenneth Gutierrez</h4>
+		        <span>Module 2</span>
+		        <div class="social">
+		          <a href=""><i class="fa fa-twitter"></i></a>
+		          <a href=""><i class="fa fa-facebook"></i></a>
+		          <a href=""><i class="fa fa-google-plus"></i></a>
+		          <a href=""><i class="fa fa-linkedin"></i></a>
+		        </div>
+		      </div>
+		    </div>
+		
+		    <div class="col-md-2">
+		      <div class="member">
+		        <div class="pic"><img src="img/paul.jpg" alt=""></div>
+		        	<h4>Paulino Bandong</h4>
+		        	<span>Module 4</span>
+		        	<div class="social">
+		         		<a href=""><i class="fa fa-twitter"></i></a>
+		          		<a href=""><i class="fa fa-facebook"></i></a>
+		          		<a href=""><i class="fa fa-google-plus"></i></a>
+		          		<a href=""><i class="fa fa-linkedin"></i></a>
+		        	</div>
+		      </div>
+		   </div>
+		
+		   <div class="col-md-2">
+		   		<div class="member">
+		            <div class="pic"><img src="img/jem.png" alt=""></div>
+		            <h4>Jem Gamban</h4>
+		            <span>Module 5</span>
+		            <div class="social">
+		              <a href=""><i class="fa fa-twitter"></i></a>
+		              <a href=""><i class="fa fa-facebook"></i></a>
+		              <a href=""><i class="fa fa-google-plus"></i></a>
+		              <a href=""><i class="fa fa-linkedin"></i></a>
+		            </div>
+		        </div>
+		   </div>
+		
+		   <div class="col-md-2">
+		   		<div class="member">
+		            <div class="pic"><img src="img/ronald.jpg" alt=""></div>
+		            <h4>Ronald Magahis</h4>
+		            <span>Module 6</span>
+		            <div class="social">
+		              <a href=""><i class="fa fa-twitter"></i></a>
+		              <a href=""><i class="fa fa-facebook"></i></a>
+		              <a href=""><i class="fa fa-google-plus"></i></a>
+		              <a href=""><i class="fa fa-linkedin"></i></a>
+		            </div>
+		        </div>
+		   </div>
+		
+		    </div>
+		  </div>
+		</section>
 	</div><!-- mainDiv -->
 	
 </body>
